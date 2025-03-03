@@ -19,7 +19,7 @@ function generateLink() {
 
     // Comprimir y codificar
     const compressed = LZString.compressToEncodedURIComponent(combinedHTML);
-    const link = `https://federicosq.github.io/pwa-chatgpt/visor.html?code=${compressed}`;
+    const link = `${window.location.origin}/visor.html?code=${compressed}`;
 
     // Mostrar enlace generado
     const linkContainer = document.getElementById('linkContainer');
