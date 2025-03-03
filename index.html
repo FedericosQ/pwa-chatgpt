@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de Previews</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Referencia local al manifest -->
+    <link rel="manifest" href="manifest.json">
+    <!-- Usamos lz-string de la carpeta local js/ -->
+    <script src="js/lz-string.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="editor-panel">
+            <div class="editor">
+                <h3>HTML</h3>
+                <textarea id="html" placeholder="<!-- Escribe tu HTML aquí -->"></textarea>
+            </div>
+            <div class="editor">
+                <h3>CSS</h3>
+                <textarea id="css" placeholder="/* Escribe tu CSS aquí */"></textarea>
+            </div>
+            <div class="editor">
+                <h3>JavaScript</h3>
+                <textarea id="js" placeholder="// Escribe tu JS aquí"></textarea>
+            </div>
+        </div>
+        
+        <button onclick="generateLink()">Generar Enlace</button>
+        <div id="linkContainer"></div>
+        
+        <h3>Vista Previa (Live)</h3>
+        <iframe id="livePreview"></iframe>
+    </div>
+
+    <!-- Lógica para generar el enlace -->
+    <script src="app.js"></script>
+    <!-- Registro del Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registrado:', registration);
+                })
+                .catch(error => {
+                    console.error('Error al registrar el Service Worker:', error);
+                });
+        }
+    </script>
+</body>
+</html>
